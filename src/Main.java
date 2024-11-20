@@ -15,6 +15,7 @@ public class Main {
 
         Flappy_bird flappyBird=new Flappy_bird();
         frame.add(flappyBird);
+        frame.pack();
         frame.setVisible(true);
     }
 }
