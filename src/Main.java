@@ -1,4 +1,4 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+ //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import javax.swing.*;
 public class Main {
@@ -16,6 +16,7 @@ public class Main {
         Flappy_bird flappyBird=new Flappy_bird();
         frame.add(flappyBird);
         frame.pack();
+        flappyBird.requestFocus();
         frame.setVisible(true);
     }
 }
