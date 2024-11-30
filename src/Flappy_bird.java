@@ -55,6 +55,7 @@ public class Flappy_bird extends JPanel implements ActionListener ,KeyListener {
     Timer palce_pipe_timer;
     int garvity=1;
     ArrayList<pipe>pipes;
+    Random random=new Random();
     public Flappy_bird() {
         setPreferredSize(new Dimension(boardWidth,boardHeight));
         setBackground(Color.blue);
@@ -85,8 +86,14 @@ public class Flappy_bird extends JPanel implements ActionListener ,KeyListener {
         gameloop.start();
     }
 public void placePipe(){
+        int randome_pipeY= (int) (pipey-pipeheight/4-Math.random()*(pipeheight/2));
+        int opening_Gap=boardHeight/4;
         pipe topepipe=new pipe(topImg);
+        topepipe.y=randome_pipeY;
         pipes.add(topepipe);
+        pipe bottomepipe=new pipe(bottomPipeImg);
+        bottomepipe.y=topepipe.y+pipeheight+opening_Gap;
+        pipes.add(bottomepipe);
 }
 
     public void paintComponent(Graphics g){
@@ -97,7 +104,7 @@ public void placePipe(){
         //background
         g.drawImage(backgroundImg,0,0,boardWidth,boardHeight,null);
         g.drawImage(birdImg,bird.x,bird.y,birdWidth,birdHegiht,null);
-        
+
         //pipe
         for (int i = 0; i <pipes.size() ; i++) {
             pipe p= pipes.get(i);
