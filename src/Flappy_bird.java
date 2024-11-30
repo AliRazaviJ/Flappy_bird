@@ -175,7 +175,18 @@ public boolean collision(Bird a,pipe b){
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode()==KeyEvent.VK_SPACE){
             vocity=-9;
+            if(gameover){
+                    //restar the game
+                bird.y=birdy;
+                vocity=0;
+                pipes.clear();
+                scorre=0;
+                gameover=false;
+                gameloop.start();
+                palce_pipe_timer.start();
+            }
         }
+
     }
 
     @Override
