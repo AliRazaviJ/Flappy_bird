@@ -54,6 +54,7 @@ public class Flappy_bird extends JPanel implements ActionListener ,KeyListener {
     Timer gameloop;
     Timer palce_pipe_timer;
     Boolean gameover=false;
+    double scorre=0;
     int garvity=1;
     ArrayList<pipe>pipes;
     Random random=new Random();
@@ -112,6 +113,15 @@ public void placePipe(){
             g.drawImage(p.img,p.x,p.y,p.width,p.height,null);
 
         }
+        //score
+        g.setColor(Color.green);
+        g.setFont(new Font("Arial",Font.PLAIN,32));
+        if(gameover){
+            g.drawString("Game Over"+String.valueOf((int)scorre),10,35);
+        }
+        else {
+            g.drawString(String.valueOf((int)scorre),10,35);
+        }
 
     }
     public void move(){
@@ -123,6 +133,10 @@ public void placePipe(){
         for (int i = 0; i <pipes.size() ; i++) {
             pipe pipe1=pipes.get(i);
             pipe1.x+=velociytx;
+            if(!pipe1.passed&& bird.x>pipe1.x+pipe1.width){
+                pipe1.passed=true;
+                scorre+=0.5;
+            }
             if(collision(bird,pipe1)){
                 gameover=true;
             }
